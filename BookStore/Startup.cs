@@ -29,6 +29,8 @@ namespace BookStore
 
             services.AddTransient<IBookRepository, EFBookRepository>();
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
 
             services.AddControllersWithViews();
 
@@ -43,6 +45,7 @@ namespace BookStore
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 
