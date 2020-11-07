@@ -16,10 +16,17 @@ namespace BookStore.Controllers
     {
         private IBookRepository repository;
 
-        public CartController(IBookRepository repo)
+        private Cart Cart;
+
+        public CartController(IBookRepository repo, Cart cartservice)
         {
             repository = repo;
+
+            Cart = cartservice;
+
         }
+
+
 
         public RedirectToActionResult AddToCart(int bookid, string returnURl)
         {

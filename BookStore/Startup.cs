@@ -28,11 +28,17 @@ namespace BookStore
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
 
             services.AddTransient<IBookRepository, EFBookRepository>();
+
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddMvc();
             services.AddMemoryCache();
             services.AddSession();
 
             services.AddControllersWithViews();
+
+
 
             
 
