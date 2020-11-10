@@ -31,17 +31,13 @@ namespace BookStore
 
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IUsersOrderInformationRepository, EFUsersOrderInformationRepository>();
 
             services.AddMvc();
             services.AddMemoryCache();
             services.AddSession();
 
             services.AddControllersWithViews();
-
-
-
-            
-
             
         }
 
@@ -62,8 +58,7 @@ namespace BookStore
                     name: "default",
                     pattern: "{controller=Book}/{action=List}/{id?}");
             });
-
-            //Улучшить URL
+            
 
             SeedData.EnsurePopulated(app);
 
