@@ -14,12 +14,18 @@ namespace BookStore.Models
         [BindNever]
         public ICollection<Order> Orders { get; set; }
 
+        [BindNever]
+        public bool Shiipped { get; set; }
+
         public string Name { get; set; }
         [Required(ErrorMessage = "Please Enter the First adress Line")]
      
         public string Street { get; set; }
         [Required(ErrorMessage = "Please Enter a city name")]
         public string City { get; set; }
+
+        [Required(ErrorMessage ="Please Enter your PostCode")]
+        public int PostCode { get; set; }
 
         public bool GiftWrap { get; set; }
 

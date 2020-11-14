@@ -21,6 +21,22 @@ namespace BookStore.Controllers
             cart = cartservice;
         }
 
+        public IActionResult List() => View(_repository.Orders.Where(o => !o.Shiipped));
+
+        [HttpPost]
+        public IActionResult MarkShipped(int orderId)
+        {
+            UsersOrderInformation order = _repository.Orders.FirstOrDefault(order => order.UsersOrderInformationId==orderId);
+            if(order!=null)
+            {
+                order.Shiipped = true;
+                _repository.SaveOrder(order);
+            }
+            return RedirectToAction(nameof(List));
+
+
+        }
+
 
         public IActionResult Checkout() => View(new UsersOrderInformation());
 
