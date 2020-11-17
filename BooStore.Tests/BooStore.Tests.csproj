@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookStore\BookStore.csproj" />
     <ProjectReference Include="C:\Users\Евгений\source\repos\BookStore\BookStore\BookStore.csproj" />
   </ItemGroup>
   

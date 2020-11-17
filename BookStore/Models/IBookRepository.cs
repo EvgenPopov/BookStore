@@ -11,5 +11,9 @@ namespace BookStore.Models
 
         IEnumerable<Book> BooksByAuthorOrName(string query);
 
+        void SaveBook(Book book);
+
+        Book DeleteBook(Book book);
+
     }
 }

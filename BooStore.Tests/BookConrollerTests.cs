@@ -1,4 +1,4 @@
-using BookStore.Conrollers;
+    using BookStore.Conrollers;
 using BookStore.Models;
 using Moq;
 using System;
@@ -26,6 +26,7 @@ namespace BooStore.Tests
             }).AsQueryable<Book>());
 
             BookController controller = new BookController(mock.Object);
+            
             controller.PageSize = 3;
 
 

@@ -10,5 +10,6 @@ namespace BookStore.Models
         IQueryable<UsersOrderInformation> Orders { get; }
 
         void SaveOrder(UsersOrderInformation OrderInformation);
+
     }
 }

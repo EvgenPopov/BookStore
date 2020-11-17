@@ -21,5 +21,47 @@ namespace BookStore.Models
             return context.Books.Where(book => book.Author.Contains(query) ||
             book.Name.Contains(query));
         }
+
+        public Book DeleteBook(Book book)
+        {
+            Book dbDelete = context.Books.FirstOrDefault(b => b.BookId == book.BookId);
+
+            if (dbDelete!=null)
+            {
+                context.Remove(dbDelete);
+                context.SaveChanges();
+            }
+
+            context.SaveChanges();
+
+            return dbDelete;
+
+        }
+
+        public void SaveBook(Book book)
+        {
+            if (book.BookId == 0)
+            {
+                context.Books.Add(book);
+                context.SaveChanges();
+            }
+            else
+            {
+                Book dbsave = context.Books
+                    .FirstOrDefault(b => b.BookId == book.BookId);
+
+                if (dbsave != null)
+                {
+                    dbsave.Author = book.Author;
+                    dbsave.Description = book.Description;
+                    dbsave.Name = book.Name;
+                    dbsave.Price = book.Price;
+                }
+
+                context.SaveChanges();
+            }
+        }
+
+
     }
 }
